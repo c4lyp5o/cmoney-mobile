@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NativeBaseProvider } from 'native-base';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from '@expo/vector-icons/Ionicons';
+
+import { STstoreProvider } from './lib/Store';
+
+import HomeScreen from './pages/Home';
+import SettingsScreen from './pages/Settings';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <STstoreProvider>
+      <NavigationContainer>
+        <NativeBaseProvider>
+          <Tab.Navigator>
+            <Tab.Screen name='Home' component={HomeScreen} options={options} />
+            <Tab.Screen
+              name='Settings'
+              component={SettingsScreen}
+              options={options}
+            />
+          </Tab.Navigator>
+        </NativeBaseProvider>
+      </NavigationContainer>
+    </STstoreProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const options = {
+  tabBarIcon: () => (
+    <Ionicons name='ios-information-circle' size={32} color='green' />
+  ),
+};
