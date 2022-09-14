@@ -2,6 +2,8 @@ import * as React from 'react';
 import { NativeBaseProvider } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StatusBar } from 'expo-status-bar';
+
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { STstoreProvider } from './lib/Store';
@@ -16,7 +18,7 @@ export default function App() {
     <STstoreProvider>
       <NavigationContainer>
         <NativeBaseProvider>
-          <Tab.Navigator>
+          <Tab.Navigator initialRouteName='Home'>
             <Tab.Screen name='Home' component={HomeScreen} options={options} />
             <Tab.Screen
               name='Settings'
@@ -24,6 +26,7 @@ export default function App() {
               options={options}
             />
           </Tab.Navigator>
+          <StatusBar style='dark' />
         </NativeBaseProvider>
       </NavigationContainer>
     </STstoreProvider>

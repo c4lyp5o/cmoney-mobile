@@ -1,5 +1,4 @@
-import { Text, Box, Button } from '@react-native-material/core';
-import { StatusBar } from 'expo-status-bar';
+import { Text, Box } from '@react-native-material/core';
 
 export default function SettingsScreen() {
   return (
