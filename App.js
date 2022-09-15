@@ -19,11 +19,15 @@ export default function App() {
       <NavigationContainer>
         <NativeBaseProvider>
           <Tab.Navigator initialRouteName='Home'>
-            <Tab.Screen name='Home' component={HomeScreen} options={options} />
+            <Tab.Screen
+              name='Home'
+              component={HomeScreen}
+              options={optionsHome}
+            />
             <Tab.Screen
               name='Settings'
               component={SettingsScreen}
-              options={options}
+              options={optionsSettings}
             />
           </Tab.Navigator>
           <StatusBar style='dark' />
@@ -32,9 +36,9 @@ export default function App() {
     </STstoreProvider>
   );
 }
-
-const options = {
-  tabBarIcon: () => (
-    <Ionicons name='ios-information-circle' size={32} color='green' />
-  ),
+const optionsHome = {
+  tabBarIcon: () => <Ionicons name='cash' size={28} />,
+};
+const optionsSettings = {
+  tabBarIcon: () => <Ionicons name='build' size={28} />,
 };

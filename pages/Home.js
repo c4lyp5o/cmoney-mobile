@@ -6,10 +6,11 @@ import Loading from '../components/Loading';
 import Exchange from '../components/Exchange';
 
 export default function HomeScreen() {
-  const { state, setState, fetchData } = useSTStore();
+  const { state, setState, fetchData, getData, storeData } = useSTStore();
   const [data, setData] = useState(null);
 
   useEffect(() => {
+    getData('rates');
     fetchData().then((json) => {
       setData(json);
     });
